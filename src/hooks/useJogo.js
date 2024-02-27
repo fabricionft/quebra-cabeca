@@ -28,18 +28,7 @@ const useJogo = () => {
     dificuldade: "facil",
     movimentosValidos: []
   });
-
-  const posicoesDosCards = [
-    {posicao: 0, src: imageP0},
-    {posicao: 1, src: imageP1},
-    {posicao: 2, src: imageP2},
-    {posicao: 3, src: imageP3},
-    {posicao: 4, src: imageP4},
-    {posicao: 5, src: imageP5},
-    {posicao: 6, src: imageP6},
-    {posicao: 7, src: imageP7},
-  ]
-
+  
   useEffect(() => {
     let indiceVazio = jogo.cards.findIndex((card) => card === '');
 
@@ -111,9 +100,7 @@ const useJogo = () => {
     let acertos = [];
 
     cards.map((card, index) => {
-      let posicaoCard = posicoesDosCards.find((posicao) => posicao.src == card);
-      let posicao = (posicaoCard !== undefined) ? posicaoCard.posicao : '';
-      if(posicao == index) acertos.push("acertou");
+      if(card.replace(".png", "").split("/src/assets/p")[1] == index) acertos.push("acertou");
     })
 
     if(acertos.length == 8) return true;
